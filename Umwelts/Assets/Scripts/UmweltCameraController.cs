@@ -48,7 +48,7 @@ public class UmweltCameraController : MonoBehaviour
 
     [Header("Mode-Specific Models")]
     public GameObject dogModel; // Assign in Inspector
-    public ParticleSystem dogParticles;
+    public ParticleSystem[] dogParticles; // Multiple Particle Systems for Dog Mode
 
     // State variables
     private Mode currentMode = Mode.Person;
@@ -115,7 +115,13 @@ public class UmweltCameraController : MonoBehaviour
 
         if (dogParticles != null)
         {
-            dogParticles.gameObject.SetActive(mode == Mode.Dog);
+            foreach (var particle in dogParticles)
+            {
+                if (particle != null)
+                {
+                    particle.gameObject.SetActive(mode == Mode.Dog);
+                }
+            }
         }
 
         switch (mode)

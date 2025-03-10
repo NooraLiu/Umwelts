@@ -33,9 +33,11 @@ public class ComputerInteractionZone : MonoBehaviour
 
     void Update()
     {
+
         if (playerInRange && cameraController != null && cameraController.CurrentMode == UmweltCameraController.Mode.Person && Input.GetKeyDown(interactionKey))
         {
             ToggleComputerScreen();
+            Debug.Log("Computer!"); // Check if this logs in Unity
         }
     }
 

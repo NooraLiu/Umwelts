@@ -11,13 +11,13 @@ C:\Program Files\Unity\Hub\Editor\2022.3.16f1\Editor\Unity.exe
 -name
 AssetImportWorker1
 -projectPath
-C:/Users/Nora/Desktop/Thesis/Unity/Umwelts
+C:/Users/Nora/Desktop/Umwelts/Umwelts
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-59959
-Successfully changed project path to: C:/Users/Nora/Desktop/Thesis/Unity/Umwelts
-C:/Users/Nora/Desktop/Thesis/Unity/Umwelts
+62427
+Successfully changed project path to: C:/Users/Nora/Desktop/Umwelts/Umwelts
+C:/Users/Nora/Desktop/Umwelts/Umwelts
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -49,16 +49,16 @@ C:/Users/Nora/Desktop/Thesis/Unity/Umwelts
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [27996] Host "[IP] 10.244.172.217 [Port] 0 [Flags] 2 [Guid] 3075552482 [EditorId] 3075552482 [Version] 1048832 [Id] WindowsEditor(7,Norara) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [3488] Host "[IP] 10.244.172.217 [Port] 0 [Flags] 2 [Guid] 2778918278 [EditorId] 2778918278 [Version] 1048832 [Id] WindowsEditor(7,Norara) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [27996] Host "[IP] 10.244.172.217 [Port] 0 [Flags] 2 [Guid] 3075552482 [EditorId] 3075552482 [Version] 1048832 [Id] WindowsEditor(7,Norara) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [3488] Host "[IP] 10.244.172.217 [Port] 0 [Flags] 2 [Guid] 2778918278 [EditorId] 2778918278 [Version] 1048832 [Id] WindowsEditor(7,Norara) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
 [Physics::Module] Initialized MultithreadedJobDispatcher with 19 workers.
-Refreshing native plugins compatible for Editor in 6.96 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 547.95 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.16f1 (d2c21f0ef2f1)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.16f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/Nora/Desktop/Thesis/Unity/Umwelts/Assets
+[Subsystems] Discovering subsystems at path C:/Users/Nora/Desktop/Umwelts/Umwelts/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
@@ -70,7 +70,7 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.16f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.16f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.16f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56700
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56656
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.16f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
@@ -78,47 +78,47 @@ Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.16f1/
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.16f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.16f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.16f1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll
-Registered in 0.010716 seconds.
-- Loaded All Assemblies, in  0.382 seconds
+Registered in 0.018876 seconds.
+- Loaded All Assemblies, in  5.880 seconds
 Native extension for UWP target not found
 Native extension for WindowsStandalone target not found
 [usbmuxd] Start listen thread
 [usbmuxd] Listen thread started
 Native extension for iOS target not found
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 285 ms
+Android Extension - Scanning For ADB Devices 282 ms
 Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.603 seconds
-Domain Reload Profiling: 984ms
-	BeginReloadAssembly (121ms)
+- Finished resetting the current domain, in  1.051 seconds
+Domain Reload Profiling: 6929ms
+	BeginReloadAssembly (5165ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (33ms)
+	RebuildCommonClasses (30ms)
 	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (57ms)
-	LoadAllAssembliesAndSetupDomain (160ms)
-		LoadAssemblies (130ms)
+	initialDomainReloadingComplete (68ms)
+	LoadAllAssembliesAndSetupDomain (606ms)
+		LoadAssemblies (5164ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (148ms)
-			TypeCache.Refresh (146ms)
-				TypeCache.ScanAssembly (129ms)
-			ScanForSourceGeneratedMonoScriptInfo (1ms)
+		AnalyzeDomain (603ms)
+			TypeCache.Refresh (601ms)
+				TypeCache.ScanAssembly (586ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (603ms)
+	FinalizeReload (1051ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (554ms)
+		SetupLoadedEditorAssemblies (1002ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (411ms)
+			InitializePlatformSupportModulesInManaged (841ms)
 			SetLoadedEditorAssemblies (3ms)
 			RefreshPlugins (0ms)
 			BeforeProcessingInitializeOnLoad (2ms)
-			ProcessInitializeOnLoadAttributes (96ms)
-			ProcessInitializeOnLoadMethodAttributes (42ms)
+			ProcessInitializeOnLoadAttributes (112ms)
+			ProcessInitializeOnLoadMethodAttributes (43ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -126,55 +126,55 @@ Domain Reload Profiling: 984ms
 ========================================================================
 Worker process is ready to serve import requests
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.579 seconds
-Refreshing native plugins compatible for Editor in 2.53 ms, found 1 plugins.
+- Loaded All Assemblies, in 16.308 seconds
+Refreshing native plugins compatible for Editor in 2.35 ms, found 1 plugins.
 Native extension for UWP target not found
 Native extension for WindowsStandalone target not found
 Native extension for iOS target not found
 Native extension for Android target not found
 Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.564 seconds
-Domain Reload Profiling: 1140ms
-	BeginReloadAssembly (138ms)
+- Finished resetting the current domain, in  0.524 seconds
+Domain Reload Profiling: 16830ms
+	BeginReloadAssembly (135ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (4ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (20ms)
-	RebuildCommonClasses (30ms)
+		CreateAndSetChildDomain (21ms)
+	RebuildCommonClasses (37ms)
 	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (49ms)
-	LoadAllAssembliesAndSetupDomain (349ms)
-		LoadAssemblies (294ms)
+	initialDomainReloadingComplete (39ms)
+	LoadAllAssembliesAndSetupDomain (16085ms)
+		LoadAssemblies (16022ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (139ms)
-			TypeCache.Refresh (112ms)
-				TypeCache.ScanAssembly (99ms)
-			ScanForSourceGeneratedMonoScriptInfo (18ms)
-			ResolveRequiredComponents (7ms)
-	FinalizeReload (564ms)
+		AnalyzeDomain (142ms)
+			TypeCache.Refresh (113ms)
+				TypeCache.ScanAssembly (100ms)
+			ScanForSourceGeneratedMonoScriptInfo (20ms)
+			ResolveRequiredComponents (8ms)
+	FinalizeReload (525ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (392ms)
+		SetupLoadedEditorAssemblies (373ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (36ms)
+			InitializePlatformSupportModulesInManaged (34ms)
 			SetLoadedEditorAssemblies (3ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (65ms)
-			ProcessInitializeOnLoadAttributes (213ms)
-			ProcessInitializeOnLoadMethodAttributes (69ms)
+			BeforeProcessingInitializeOnLoad (63ms)
+			ProcessInitializeOnLoadAttributes (199ms)
+			ProcessInitializeOnLoadMethodAttributes (68ms)
 			AfterProcessingInitializeOnLoad (6ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (6ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 3.15 ms, found 1 plugins.
+		AwakeInstancesAfterBackupRestoration (7ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 2.83 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4875 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 78 unused Assets / (2.1 MB). Loaded Objects now: 5333.
-Memory consumption went from 302.9 MB to 300.8 MB.
-Total: 3.608900 ms (FindLiveObjects: 0.281700 ms CreateObjectMapping: 0.125200 ms MarkObjects: 2.639000 ms  DeleteObjects: 0.561600 ms)
+Unloading 4867 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 72 unused Assets / (2.0 MB). Loaded Objects now: 5326.
+Memory consumption went from 224.8 MB to 222.8 MB.
+Total: 3.833200 ms (FindLiveObjects: 0.278400 ms CreateObjectMapping: 0.124100 ms MarkObjects: 2.882700 ms  DeleteObjects: 0.546500 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
@@ -190,3 +190,475 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 429241.345439 seconds.
+  path: Assets/UniversalRenderPipelineGlobalSettings.asset
+  artifactKey: Guid(18dc0cd2c080841dea60987a38ce93fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UniversalRenderPipelineGlobalSettings.asset using Guid(18dc0cd2c080841dea60987a38ce93fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '117c905ca2dc1f88cf380da90c1af6aa') in 0.009825 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.366 seconds
+Refreshing native plugins compatible for Editor in 2.42 ms, found 1 plugins.
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.392 seconds
+Domain Reload Profiling: 1755ms
+	BeginReloadAssembly (124ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (28ms)
+	RebuildCommonClasses (27ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (27ms)
+	LoadAllAssembliesAndSetupDomain (176ms)
+		LoadAssemblies (222ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (19ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (12ms)
+	FinalizeReload (1392ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (403ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (41ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (70ms)
+			ProcessInitializeOnLoadAttributes (208ms)
+			ProcessInitializeOnLoadMethodAttributes (75ms)
+			AfterProcessingInitializeOnLoad (7ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (19ms)
+Refreshing native plugins compatible for Editor in 2.47 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4669 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 47 unused Assets / (1.9 MB). Loaded Objects now: 5331.
+Memory consumption went from 188.5 MB to 186.6 MB.
+Total: 3.176600 ms (FindLiveObjects: 0.274600 ms CreateObjectMapping: 0.138500 ms MarkObjects: 2.250600 ms  DeleteObjects: 0.511300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 39606d92bcf39ac9cd6fca1116091104 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 2812.430426 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/Color_62.mat
+  artifactKey: Guid(f44271d9c779bbc458a62ad49557e248) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/Color_62.mat using Guid(f44271d9c779bbc458a62ad49557e248) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1aa6fe994cfa7f2475bc6b9fcce3324c') in 2.508330 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 23
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/Color_97.mat
+  artifactKey: Guid(24cf23cc9c38a1a4b868f9e760d7cd9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/Color_97.mat using Guid(24cf23cc9c38a1a4b868f9e760d7cd9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f042ae3b66ec889a9652165ca8349508') in 0.047568 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/Color_98.mat
+  artifactKey: Guid(a711e800c577c454789d5f03af07e5fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/Color_98.mat using Guid(a711e800c577c454789d5f03af07e5fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3aa67e187079e0692903a0a00d00ca55') in 0.049626 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img15_14.mat
+  artifactKey: Guid(0680f73c88bee8b4aa70d885d30095a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img15_14.mat using Guid(0680f73c88bee8b4aa70d885d30095a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f7da1b609553f201ecaa8faa5d6af5e0') in 0.064571 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img29_74.mat
+  artifactKey: Guid(41ede08ad0fa63246a698c6ed0d92382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img29_74.mat using Guid(41ede08ad0fa63246a698c6ed0d92382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5edac811c2ad014294462941ed275c78') in 0.066066 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/Color_65.mat
+  artifactKey: Guid(2728ef07cef6c0647a95c84fd4f9e0e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/Color_65.mat using Guid(2728ef07cef6c0647a95c84fd4f9e0e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3811fb3e1ee6187a423d491f6d8914a1') in 0.050938 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img9_101.mat
+  artifactKey: Guid(d2661c8167b9a1844985d0106ab386d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img9_101.mat using Guid(d2661c8167b9a1844985d0106ab386d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00ae7100249d0814e63bcf05b13a1594') in 0.066719 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/Color_93.mat
+  artifactKey: Guid(f6674c6c982451349b8f5a4e94abe8ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/Color_93.mat using Guid(f6674c6c982451349b8f5a4e94abe8ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5f1fd45f68840e0207128c4c1e9ebca') in 0.045169 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img23_25.mat
+  artifactKey: Guid(58b7e93dddd8ca1488ffc23e3220043f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img23_25.mat using Guid(58b7e93dddd8ca1488ffc23e3220043f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b249328838ba37f479e1ccb152003efc') in 0.070473 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img24_68.mat
+  artifactKey: Guid(7e7644513e6000d4094940c3f54e2992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img24_68.mat using Guid(7e7644513e6000d4094940c3f54e2992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68d0c9b792199dd9a37cf0343a1cf6e3') in 0.072581 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img6_27.mat
+  artifactKey: Guid(508fe11c70b1ce14799468f23db83f67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img6_27.mat using Guid(508fe11c70b1ce14799468f23db83f67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0978ca524b378b9dfe19db11b7e8398') in 0.062622 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img27_71.mat
+  artifactKey: Guid(3fe5518a5d412cf40aa738be4d5b8fb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img27_71.mat using Guid(3fe5518a5d412cf40aa738be4d5b8fb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b51ff3bb6e5270879c2d0820bc51904b') in 0.067677 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img17_7.mat
+  artifactKey: Guid(384b1efce26866d469992012806014de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img17_7.mat using Guid(384b1efce26866d469992012806014de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1039a28bd9560a3abb452b3b437be2a4') in 0.064869 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/Color_84.mat
+  artifactKey: Guid(acf450be38ce3d8438a196ae63b86391) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/Color_84.mat using Guid(acf450be38ce3d8438a196ae63b86391) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87e1bd12103746233d001fd11e663aa8') in 0.047819 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img4_28_1.mat
+  artifactKey: Guid(40beb9498c87a47488f93d0cbfa17a22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img4_28_1.mat using Guid(40beb9498c87a47488f93d0cbfa17a22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ca8dd47600497a4c8d83febc17d7cdb') in 0.066070 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img4_28.mat
+  artifactKey: Guid(332b3a3389a2bc2448cc6dd1967bd8b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img4_28.mat using Guid(332b3a3389a2bc2448cc6dd1967bd8b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '405d20ad71821081088316c71c5b1ad8') in 0.064237 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img20_16.mat
+  artifactKey: Guid(a282981f4d032344895a9f324d89106c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img20_16.mat using Guid(a282981f4d032344895a9f324d89106c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c8cd9755493a7fae30d9de4ed7f5af2f') in 0.063086 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img1_1.mat
+  artifactKey: Guid(98deb8c614011c7458ce2e28b218ed20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img1_1.mat using Guid(98deb8c614011c7458ce2e28b218ed20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2f852d20ee4819fd2a786f08424e34a') in 0.589649 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img19_9.mat
+  artifactKey: Guid(d61b6fe851b4ee245924adb4af573642) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img19_9.mat using Guid(d61b6fe851b4ee245924adb4af573642) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f522a154603eda561e8a97560333662') in 0.062018 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img30_75.mat
+  artifactKey: Guid(82453dbba94a38c4bb173a0504c9ec37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img30_75.mat using Guid(82453dbba94a38c4bb173a0504c9ec37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b05ebd867944053406cdb232e309471') in 0.068591 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/Color_94.mat
+  artifactKey: Guid(34005d847ed0666419f78e47939c04d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/Color_94.mat using Guid(34005d847ed0666419f78e47939c04d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22e22077821d6ea4d002ba666dfc1b4d') in 0.053054 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/Color_63.mat
+  artifactKey: Guid(7a1a7c552c8720b4d9a9546ec2ce0376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/Color_63.mat using Guid(7a1a7c552c8720b4d9a9546ec2ce0376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '821745c623a36a3986df113166186bef') in 0.041767 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img31_76.mat
+  artifactKey: Guid(2af60d6a1d0db6142965afc30d25a623) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img31_76.mat using Guid(2af60d6a1d0db6142965afc30d25a623) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2ea7808cf77717a36cbae72cb950d89') in 0.056903 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img2_4.mat
+  artifactKey: Guid(018545bb4632cb943b8319e355e11fb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img2_4.mat using Guid(018545bb4632cb943b8319e355e11fb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c35b9a14f77b8de67fa3db0e5a9d38e4') in 0.059773 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000049 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img11_10_1.mat
+  artifactKey: Guid(c6257ed60e3199343a154cc2a08a3ab9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/Materials/img11_10_1.mat using Guid(c6257ed60e3199343a154cc2a08a3ab9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55c68c3c9bcdf96ea6c01cd18f88505f') in 0.064526 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 15.487742 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img1_0.jpg
+  artifactKey: Guid(6c46bffea4c344a45b5fc91a88135934) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img1_0.jpg using Guid(6c46bffea4c344a45b5fc91a88135934) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '069432e65939a6013687f48563d6a16a') in 0.039195 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img32_77_6.jpg
+  artifactKey: Guid(992fbbf042621e347a97627e52bbde0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img32_77_6.jpg using Guid(992fbbf042621e347a97627e52bbde0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17c0110d865cce01c4969632f9539404') in 0.056815 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img26_70.jpg
+  artifactKey: Guid(a77ac8e849db98648ab9584331267ec4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img26_70.jpg using Guid(a77ac8e849db98648ab9584331267ec4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '309c04bf7010e5d1628687b828101b46') in 0.030726 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img40_40.jpg
+  artifactKey: Guid(3bbe1f5fa6522ec4ba62422030177779) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img40_40.jpg using Guid(3bbe1f5fa6522ec4ba62422030177779) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '011bd33a56c321ebbf0762b73371bb16') in 0.046036 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000079 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img9_101.jpg
+  artifactKey: Guid(89c0db558e17ab24997877de5d458881) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img9_101.jpg using Guid(89c0db558e17ab24997877de5d458881) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebc2293aae7ca64deddccca69ad9367c') in 0.028984 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img17_7.jpg
+  artifactKey: Guid(1e0d0195607915e41bfae674ab5ee8a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img17_7.jpg using Guid(1e0d0195607915e41bfae674ab5ee8a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3103ebb01e0bcf2abee12b7f52568ea') in 0.027904 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000075 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img42_43.png
+  artifactKey: Guid(19c3bc918b457154eaafda720716f229) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img42_43.png using Guid(19c3bc918b457154eaafda720716f229) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5144a0b97f2c898a2af64d625d363784') in 0.032667 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img31_76.jpg
+  artifactKey: Guid(01ca695d0f4bc4f4e88138ee39adc936) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img31_76.jpg using Guid(01ca695d0f4bc4f4e88138ee39adc936) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '118da16393932de1e49732b23430f399') in 0.028414 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img32_77_3.jpg
+  artifactKey: Guid(510462f7559254d4d9cd642fa881ba06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img32_77_3.jpg using Guid(510462f7559254d4d9cd642fa881ba06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee81c7c98e20d113695bd8ebc9474637') in 0.047119 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img39_36.jpg
+  artifactKey: Guid(9b497ab71af9e504ab8d5b79c20b20a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img39_36.jpg using Guid(9b497ab71af9e504ab8d5b79c20b20a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '813f743063b0c27e3d55b7da428bdd08') in 0.044306 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img30_75.jpg
+  artifactKey: Guid(c96e26d3f77f47f4dbbff17a6303f35b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img30_75.jpg using Guid(c96e26d3f77f47f4dbbff17a6303f35b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3f47d68def4186105fc480b3a74bedc') in 0.036436 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img16_6.jpg
+  artifactKey: Guid(5dbb8de75a1b6d64abf6162d16ffc799) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img16_6.jpg using Guid(5dbb8de75a1b6d64abf6162d16ffc799) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f12d924e0f9e4449859c521c8a442dd5') in 0.011932 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img32_77_4.jpg
+  artifactKey: Guid(846bb7401936a3347b9e23a95bd41642) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img32_77_4.jpg using Guid(846bb7401936a3347b9e23a95bd41642) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b57404679b3e0cdf12449a30d2e8ade6') in 0.044838 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img37_32.jpg
+  artifactKey: Guid(b169e68f5627f06489aef064fa4ff4dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img37_32.jpg using Guid(b169e68f5627f06489aef064fa4ff4dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60965c0e12915cabf87afadd05235d4f') in 0.045142 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img32_77.jpg
+  artifactKey: Guid(a99b50869275f514e85ecb215240381d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img32_77.jpg using Guid(a99b50869275f514e85ecb215240381d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1df6ac37febbaedc0dd113d29ff768c8') in 0.028127 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img11_10.jpg
+  artifactKey: Guid(adcb68040480d104c84bdbf35f421bc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img11_10.jpg using Guid(adcb68040480d104c84bdbf35f421bc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d16d88c413aa3375b40256f108591d2') in 0.009821 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img35_80.jpg
+  artifactKey: Guid(bd34dce7560f0ef43b812c0eb07c909c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img35_80.jpg using Guid(bd34dce7560f0ef43b812c0eb07c909c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '98104e80c14e027277edfce73af90f1e') in 0.048610 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000068 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img28_73.jpg
+  artifactKey: Guid(285598c37e3a5704a9a914defe763a9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img28_73.jpg using Guid(285598c37e3a5704a9a914defe763a9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '228bc54f55914a15e61d080c4f1bebdf') in 0.029014 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img18_8.jpg
+  artifactKey: Guid(0189ad2736368d94c9603f0f337516d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img18_8.jpg using Guid(0189ad2736368d94c9603f0f337516d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e69ef7fc5ca8c2d957ad38e887ded777') in 0.024523 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img13_12.jpg
+  artifactKey: Guid(2b3047d518d514d478d5ecaa8eb72876) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img13_12.jpg using Guid(2b3047d518d514d478d5ecaa8eb72876) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '06ba97b711340e6a071d159d6c89eea9') in 0.008020 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img41_42.jpg
+  artifactKey: Guid(f5fac3ddaaad89148a979aa047e09f07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img41_42.jpg using Guid(f5fac3ddaaad89148a979aa047e09f07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f53dc0647916d8fe24fd2e3db4da98b0') in 0.039356 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img38_33.jpg
+  artifactKey: Guid(bcacd69d7f7e3164aa06b1573a8b4d6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img38_33.jpg using Guid(bcacd69d7f7e3164aa06b1573a8b4d6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bed3cc6934a9dd05c741e9c8af6a85e5') in 0.044421 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img4_28.jpg
+  artifactKey: Guid(dc7ccc527dcb0124a9f967b44b95c9cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img4_28.jpg using Guid(dc7ccc527dcb0124a9f967b44b95c9cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd181f5d46969524bb0776ead1272577') in 0.011990 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000060 seconds.
+  path: Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img32_77_2.jpg
+  artifactKey: Guid(499daacb93adee14b8e5e23cebda79b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/City/kitchen-10012025/source/2025_063536_02_01609/2025_063536_02_01609/img32_77_2.jpg using Guid(499daacb93adee14b8e5e23cebda79b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd7807a2bb53f14dd06f3c57ade40246d') in 0.033486 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: The I/O operation has been aborted because of either a thread exit or an application request.
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
