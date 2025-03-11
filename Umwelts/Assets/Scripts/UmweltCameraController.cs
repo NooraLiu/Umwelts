@@ -50,6 +50,22 @@ public class UmweltCameraController : MonoBehaviour
     public GameObject dogModel; // Assign in Inspector
     public ParticleSystem[] dogParticles; // Multiple Particle Systems for Dog Mode
 
+    public GameObject hiddenObjects;
+    public GameObject personObject;
+    public GameObject dogObject;
+
+    [Header("Skybox Materials")]
+    public Material personSkybox;
+    public Material dogSkybox;
+    public Material birdSkybox;
+
+    [Header("Lighting Settings")]
+    public Light directionalLight; // Assign the Directional Light in the Inspector
+
+
+    public bool ending = false;
+
+
     // State variables
     private Mode currentMode = Mode.Person;
     private CharacterController controller;
@@ -107,7 +123,29 @@ public class UmweltCameraController : MonoBehaviour
         isHovering = false;
 
         UmweltsManager.Instance?.ApplyEffect((UmweltsManager.EffectMode)mode);
+        
+        //Skybox and lighting
+        if (mode == Mode.Person)
+        {
+            RenderSettings.ambientIntensity = 0.3f;
+            RenderSettings.skybox = personSkybox;
+            RenderSettings.reflectionIntensity = 0.4f;
+        }
+        else if (mode == Mode.Dog)
+        {
+            RenderSettings.ambientIntensity = 1.5f; // Normal brightness for Person mode
+            RenderSettings.skybox = dogSkybox;
+            directionalLight.transform.rotation = Quaternion.Euler(0f, 3f, 0f);
+        }
+        else if (mode == Mode.Bird)
+        {
+            RenderSettings.ambientIntensity = 0.8f;
+            RenderSettings.skybox = birdSkybox;
+            directionalLight.transform.rotation = Quaternion.Euler(5.65f, -98f, 0f);
+            RenderSettings.reflectionIntensity = 1f;
+        }
 
+        //Mode specific Models
         if (dogModel != null)
         {
             dogModel.SetActive(mode == Mode.Dog);
@@ -122,6 +160,21 @@ public class UmweltCameraController : MonoBehaviour
                     particle.gameObject.SetActive(mode == Mode.Dog);
                 }
             }
+        }
+
+        if (hiddenObjects != null)
+        {
+            hiddenObjects.SetActive(mode != Mode.Person || ending);
+        }
+
+        if (personObject != null)
+        {
+            personObject.SetActive(mode == Mode.Person);
+        }
+
+        if (dogObject != null)
+        {
+            dogObject.SetActive(mode == Mode.Dog);
         }
 
         switch (mode)

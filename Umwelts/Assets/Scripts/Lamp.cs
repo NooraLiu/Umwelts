@@ -1,11 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class ComputerInteractionZone : MonoBehaviour
+public class Lamp : MonoBehaviour
 {
-    public GameObject computerScreenImage; // Image to show/hide
+
     public float interactionRadius = 2f;
     public KeyCode interactionKey = KeyCode.Space;
     public GameObject nextObject;
+    public TextMeshProUGUI Text;
 
     private bool playerInRange;
     private Transform player;
@@ -21,9 +25,9 @@ public class ComputerInteractionZone : MonoBehaviour
         }
 
         // Ensure the image is hidden initially
-        if (computerScreenImage != null)
+        if (Text != null)
         {
-            computerScreenImage.SetActive(false);
+            Text.gameObject.SetActive(false);
         }
 
         // Add sphere collider for visual debugging
@@ -36,19 +40,24 @@ public class ComputerInteractionZone : MonoBehaviour
     {
 
         if (playerInRange && cameraController != null && cameraController.CurrentMode == UmweltCameraController.Mode.Person && Input.GetKeyDown(interactionKey))
+    {
+        ToggleComputerScreen();
+
+        // Ensure the next object is only activated if it's inactive
+        if (nextObject != null && !nextObject.activeSelf)
         {
-            ToggleComputerScreen();
             nextObject.gameObject.SetActive(true);
-            Debug.Log("Computer!"); // Check if this logs in Unity
+            Debug.Log("Activated: " + nextObject.name);
         }
+    }
     }
 
     void ToggleComputerScreen()
     {
-        if (computerScreenImage != null)
+        if (Text != null)
         {
             isImageActive = !isImageActive;
-            computerScreenImage.SetActive(isImageActive);
+            Text.gameObject.SetActive(isImageActive);
         }
     }
 

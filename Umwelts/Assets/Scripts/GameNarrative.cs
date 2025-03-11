@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class GameNarrative : MonoBehaviour
 {
     public TextMeshProUGUI narrativeText; // TextMeshPro text for displaying messages
-    public Button lightButton; // Button to wake up
+
+    public TextMeshProUGUI wakeUpPrompt; // Instead of a button, show a text prompt
+
     public GameObject playerController; // The Player GameObject with CharacterController
     public Camera introCamera; // The camera for the intro scene
     public Image fadeOverlay; // UI Image for the fade-in effect
@@ -31,8 +33,7 @@ public class GameNarrative : MonoBehaviour
         fadeOverlay.gameObject.SetActive(true);
         fadeOverlay.color = new Color(0, 0, 0, 1); // Fully black
 
-        // Hide button until all texts are displayed
-        lightButton.gameObject.SetActive(false);
+        wakeUpPrompt.gameObject.SetActive(false);
 
         // Store initial camera rotation (looking upwards)
         initialRotation = introCamera.transform.rotation;
@@ -59,6 +60,11 @@ public class GameNarrative : MonoBehaviour
             // Smoothly interpolate towards the target rotation
             introCamera.transform.rotation = Quaternion.Lerp(introCamera.transform.rotation, targetRotation, Time.deltaTime * 2f);
         }
+
+        if (wakeUpPrompt.gameObject.activeSelf && Input.GetKeyDown(KeyCode.Space))
+        {
+            TurnOnLight();
+        }
     }
 
     IEnumerator NarrativeSequence()
@@ -68,24 +74,22 @@ public class GameNarrative : MonoBehaviour
 
         // Display text sequence
         yield return StartCoroutine(ShowText("Tomorrow, 9 A.M.", 3));
-        yield return StartCoroutine(ShowText("A very important meeting...", 3));
-        yield return StartCoroutine(ShowText("Have I put it to my calendar?", 3));
-        yield return StartCoroutine(ShowText("One sheep.", 3));
-        yield return StartCoroutine(ShowText("What does grass taste like?", 3));
-        yield return StartCoroutine(ShowText("Two sheeps.", 3));
-        yield return StartCoroutine(ShowText("Cows have four stomachs.", 3));
-        yield return StartCoroutine(ShowText("Does each stomach taste grass differently?", 3));
-        yield return StartCoroutine(ShowText("Three sheeps.", 3));
-        yield return StartCoroutine(ShowText("Ah, that's stupid.", 3));
-        yield return StartCoroutine(ShowText("Stomachs don't taste... ", 3));
-        yield return StartCoroutine(ShowText("Or... do they?", 3));
-        yield return StartCoroutine(ShowText("Four sheeps.", 3));
-        yield return StartCoroutine(ShowText("......", 6));
-        yield return StartCoroutine(ShowText("WHY CAN'T I FALL ASLEEP?", 3));
+        // yield return StartCoroutine(ShowText("A very important meeting...", 3));
+        // yield return StartCoroutine(ShowText("Have I put it to my calendar?", 3));
+        // yield return StartCoroutine(ShowText("One sheep.", 3));
+        // yield return StartCoroutine(ShowText("What does grass taste like?", 3));
+        // yield return StartCoroutine(ShowText("Two sheeps.", 3));
+        // yield return StartCoroutine(ShowText("Cows have four stomachs.", 3));
+        // yield return StartCoroutine(ShowText("Does each stomach taste grass differently?", 3));
+        // yield return StartCoroutine(ShowText("Three sheeps.", 3));
+        // yield return StartCoroutine(ShowText("Ah, that's stupid.", 3));
+        // yield return StartCoroutine(ShowText("Stomachs don't taste... ", 3));
+        // yield return StartCoroutine(ShowText("Or... do they?", 3));
+        // yield return StartCoroutine(ShowText("Four sheeps.", 3));
+        // yield return StartCoroutine(ShowText("......", 6));
+        // yield return StartCoroutine(ShowText("WHY CAN'T I FALL ASLEEP?", 3));
 
-        // Now that all texts are done, show the button
-        lightButton.gameObject.SetActive(true);
-        lightButton.onClick.AddListener(TurnOnLight);
+        wakeUpPrompt.gameObject.SetActive(true);
     }
 
     void TurnOnLight()
@@ -96,8 +100,7 @@ public class GameNarrative : MonoBehaviour
         // Enable player controller
         playerController.SetActive(true);
 
-        // Hide button
-        lightButton.gameObject.SetActive(false);
+        wakeUpPrompt.gameObject.SetActive(false);
 
         narrativeCanvas.gameObject.SetActive(false);
         interactionZone.SetActive(true);
