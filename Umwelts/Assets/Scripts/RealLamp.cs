@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
-public class Lamp : MonoBehaviour
+using Unity.VisualScripting;
+public class RealLamp : MonoBehaviour
 {
-
+    
     public float interactionRadius = 2f;
     public KeyCode interactionKey = KeyCode.Space;
     public GameObject nextObject;
     public TextMeshProUGUI Text;
+    public Light lamp;
 
     private bool playerInRange;
     private Transform player;
@@ -29,6 +30,10 @@ public class Lamp : MonoBehaviour
         {
             Text.gameObject.SetActive(false);
         }
+        if (lamp != null)
+        {
+            lamp.gameObject.SetActive(false);
+        }
 
         // Add sphere collider for visual debugging
         SphereCollider sc = gameObject.AddComponent<SphereCollider>();
@@ -42,6 +47,7 @@ public class Lamp : MonoBehaviour
         if (playerInRange && cameraController != null && cameraController.CurrentMode == UmweltCameraController.Mode.Person && Input.GetKeyDown(interactionKey))
     {
         ToggleComputerScreen();
+        lamp.gameObject.SetActive(true);
 
         // Ensure the next object is only activated if it's inactive
         if (nextObject != null && !nextObject.activeSelf)
@@ -54,11 +60,12 @@ public class Lamp : MonoBehaviour
 
     void ToggleComputerScreen()
     {
-        if (Text != null)
-        {
-            isImageActive = !isImageActive;
-            Text.gameObject.SetActive(isImageActive);
-        }
+        isImageActive = !isImageActive; // Toggle the state only once per call
+
+    if (Text != null)
+    {
+        Text.gameObject.SetActive(isImageActive);
+    }
     }
 
     void OnTriggerEnter(Collider other)

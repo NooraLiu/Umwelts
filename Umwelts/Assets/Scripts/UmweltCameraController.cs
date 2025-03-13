@@ -62,6 +62,8 @@ public class UmweltCameraController : MonoBehaviour
     [Header("Lighting Settings")]
     public Light directionalLight; // Assign the Directional Light in the Inspector
 
+    [Header("Mode-Specific Spawn Points")]
+    public Transform dogSpawnPoint; // Assign in Inspector
 
     public bool ending = false;
 
@@ -116,7 +118,7 @@ public class UmweltCameraController : MonoBehaviour
     }
 
     #region Mode Configuration
-    void SetMode(Mode mode)
+   public void SetMode(Mode mode)
     {
         _currentMode = mode;
         currentMode = mode;
@@ -127,19 +129,31 @@ public class UmweltCameraController : MonoBehaviour
         //Skybox and lighting
         if (mode == Mode.Person)
         {
-            RenderSettings.ambientIntensity = 0.3f;
+            RenderSettings.ambientIntensity = 0.7f;
             RenderSettings.skybox = personSkybox;
             RenderSettings.reflectionIntensity = 0.4f;
         }
         else if (mode == Mode.Dog)
         {
-            RenderSettings.ambientIntensity = 1.5f; // Normal brightness for Person mode
+            RenderSettings.ambientIntensity = 2f; // Normal brightness for Person mode
             RenderSettings.skybox = dogSkybox;
             directionalLight.transform.rotation = Quaternion.Euler(0f, 3f, 0f);
+
+            // Move player to dog mode position
+            if (dogSpawnPoint != null)
+            {
+                transform.position = dogSpawnPoint.position;
+                transform.rotation = dogSpawnPoint.rotation; // Adjust rotation if needed
+            }
+            else
+            {
+                Debug.LogWarning("Dog Spawn Point not set in Inspector!");
+            }
+            if (interactionHintText != null) interactionHintText.SetActive(false);
         }
         else if (mode == Mode.Bird)
         {
-            RenderSettings.ambientIntensity = 0.8f;
+            RenderSettings.ambientIntensity = 1.2f;
             RenderSettings.skybox = birdSkybox;
             directionalLight.transform.rotation = Quaternion.Euler(5.65f, -98f, 0f);
             RenderSettings.reflectionIntensity = 1f;

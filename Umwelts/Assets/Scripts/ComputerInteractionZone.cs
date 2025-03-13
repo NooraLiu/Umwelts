@@ -65,6 +65,10 @@ public class ComputerInteractionZone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            if (computerScreenImage != null)
+        {
+            computerScreenImage.SetActive(false);
+        }
         }
     }
 }
