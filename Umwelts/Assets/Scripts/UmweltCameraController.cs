@@ -84,6 +84,8 @@ public class UmweltCameraController : MonoBehaviour
 
 
     public bool ending = false;
+    private Rigidbody rb;
+    private bool usingRigidbody = false;
 
 
     // State variables
@@ -119,6 +121,10 @@ public class UmweltCameraController : MonoBehaviour
         defaultFOV = playerCamera.fieldOfView;
         Cursor.lockState = CursorLockMode.Locked;
         SetMode(Mode.Person);
+
+        rb = GetComponent<Rigidbody>();
+        rb.useGravity = false;
+        rb.isKinematic = true;
     }
 
     void Update()
@@ -147,6 +153,26 @@ public class UmweltCameraController : MonoBehaviour
             case Mode.Bird: HandleBirdMovement(); break;
         }
     }
+
+    void FixedUpdate()
+{
+    if (!usingRigidbody || currentPlanet == null) return;
+
+    Vector3 gravityDir = (currentPlanet.position - transform.position).normalized;
+    //rb.AddForce(gravityDir * planetGravity, ForceMode.Acceleration);
+
+    Quaternion targetRot = Quaternion.FromToRotation(transform.up, -gravityDir) * transform.rotation;
+    rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRot, Time.fixedDeltaTime * 5f));
+
+    float h = Input.GetAxis("Horizontal");
+    float v = Input.GetAxis("Vertical");
+
+    Vector3 camForward = Vector3.ProjectOnPlane(playerCamera.transform.forward, -gravityDir).normalized;
+    Vector3 camRight = Vector3.Cross(-gravityDir, camForward).normalized;
+    Vector3 move = (camForward * v + camRight * h).normalized;
+
+    rb.MovePosition(rb.position + move * planetWalkSpeed * Time.fixedDeltaTime);
+}
 
     #region Mode Configuration
    public void SetMode(Mode mode)
@@ -298,7 +324,7 @@ public class UmweltCameraController : MonoBehaviour
         MoveCharacter(dogSettings.walkSpeed);
 
         CheckDogJumpRegions();
-        if (canDogJump && Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             velocity.y = Mathf.Sqrt(dogJumpForce * 2f * gravity);
         }
@@ -328,16 +354,20 @@ public class UmweltCameraController : MonoBehaviour
 {
     if (isOnPlanet)
     {
-        HandleSphericalWalking();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (isOnPlanet && Input.GetKeyDown(KeyCode.Space))
         {
             isOnPlanet = false;
             isHovering = true;
-            verticalSpeed = avianSettings.ascentSpeed;
+            verticalSpeed = 0f;
+
+            rb.isKinematic = true;            // Stop using physics
+            usingRigidbody = false;
+            controller.enabled = true;        // Resume CharacterController movement
+            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0); // upright
         }
 
-        return;
+    return;
     }
 
     HandleTakeoffAndLanding();
@@ -377,27 +407,66 @@ public class UmweltCameraController : MonoBehaviour
     }
 
     void HandleAltitudeControl()
+{
+    if (!isHovering) return;
+
+    // Handle ascending
+    if (isAscending)
     {
-        if (isAscending && transform.position.y >= targetHoverY)
+        if (transform.position.y >= targetHoverY)
         {
+            transform.position = new Vector3(transform.position.x, targetHoverY, transform.position.z);
             isAscending = false;
             verticalSpeed = 0f;
         }
-
-        if (isDescending && controller.isGrounded)
-        {
-            CompleteLanding();
-        }
     }
 
-    void StartAscending()
+    // Only fall if explicitly descending
+    if (isDescending)
     {
-        if (isHovering) return;
-        isHovering = true;
-        isAscending = true;
-        targetHoverY = transform.position.y + avianSettings.hoverHeight;
-        verticalSpeed = avianSettings.ascentSpeed;
+        verticalSpeed = -avianSettings.descentSpeed;
     }
+    else if (!isAscending)
+    {
+        verticalSpeed = 0f; // Maintain altitude
+    }
+
+    if (verticalSpeed < 0 && controller.isGrounded)
+    {
+        CompleteLanding();
+    }
+}
+
+    // void StartAscending()
+    // {
+    //     if (isHovering) return;
+    //     isHovering = true;
+    //     isAscending = true;
+    //     targetHoverY = transform.position.y + avianSettings.hoverHeight;
+    //     verticalSpeed = avianSettings.ascentSpeed;
+    // }
+    void StartAscending()
+{
+    if (!isHovering)
+    {
+        // First time takeoff
+        isHovering = true;
+    }
+
+    // Additional ascension while hovering
+    RaycastHit hit;
+    float maxRise = avianSettings.hoverHeight;
+
+    if (Physics.Raycast(transform.position, Vector3.up, out hit, maxRise))
+    {
+        maxRise = hit.distance - 0.1f;
+        if (maxRise <= 0f) return; // Too close to ceiling
+    }
+
+    targetHoverY = transform.position.y + maxRise;
+    isAscending = true;
+    verticalSpeed = avianSettings.ascentSpeed;
+}
 
     void StartDescending()
     {
@@ -431,37 +500,6 @@ public class UmweltCameraController : MonoBehaviour
     }
 }
 
-void HandleSphericalWalking()
-{
-    if (currentPlanet == null) return;
-
-    // 1. Gravity direction (center of planet to player)
-    Vector3 gravityDir = (currentPlanet.position - transform.position).normalized;
-
-    // 2. Align player upright
-    Quaternion targetRotation = Quaternion.FromToRotation(transform.up, gravityDir) * transform.rotation;
-    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
-
-    // 3. Input on tangent plane
-    float h = Input.GetAxis("Horizontal");
-    float v = Input.GetAxis("Vertical");
-
-    Vector3 inputDir = new Vector3(h, 0f, v).normalized;
-    if (inputDir.sqrMagnitude < 0.01f) return;
-
-    // 4. Use camera for movement orientation
-    Vector3 camForward = Vector3.ProjectOnPlane(playerCamera.transform.forward, gravityDir).normalized;
-    Vector3 camRight = Vector3.Cross(gravityDir, camForward).normalized;
-    Vector3 moveDir = (camForward * v + camRight * h).normalized;
-
-    // 5. Move using CharacterController
-    controller.Move(moveDir * planetWalkSpeed * Time.deltaTime);
-
-    // 6. Pull toward surface gently (gravity replaces snap correction)
-    controller.Move(gravityDir * planetGravity * Time.deltaTime);
-}
-
-
 void BeginPlanetLanding()
 {
     if (currentPlanet == null) return;
@@ -469,6 +507,10 @@ void BeginPlanetLanding()
     isHovering = false;
     isOnPlanet = true;
     verticalSpeed = 0f;
+
+    controller.enabled = false;
+    rb.isKinematic = false;
+    usingRigidbody = true;
 
     if (landHintText != null) landHintText.SetActive(false);
 }
@@ -508,12 +550,12 @@ void BeginPlanetLanding()
 
     #region Physics
     void ApplyGravity()
-    {
-        if (isOnPlanet) return;
-        if (controller.isGrounded && velocity.y < 0) velocity.y = -0.1f;
-        velocity.y -= gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
-    }
+{
+    if (isOnPlanet || usingRigidbody) return;
+    if (controller.isGrounded && velocity.y < 0) velocity.y = -0.1f;
+    velocity.y -= gravity * Time.deltaTime;
+    controller.Move(velocity * Time.deltaTime);
+}
     #endregion
 
     #region Input Handling
