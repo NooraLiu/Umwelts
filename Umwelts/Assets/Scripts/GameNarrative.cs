@@ -74,20 +74,19 @@ public class GameNarrative : MonoBehaviour
 
         // Display text sequence
         yield return StartCoroutine(ShowText("Tomorrow, 9 A.M.", 3));
-        yield return StartCoroutine(ShowText("A very important meeting...", 3));
-        yield return StartCoroutine(ShowText("Have I put it to my calendar?", 3));
-        yield return StartCoroutine(ShowText("One sheep.", 3));
-        yield return StartCoroutine(ShowText("What does grass taste like?", 3));
-        yield return StartCoroutine(ShowText("Two sheeps.", 3));
-        yield return StartCoroutine(ShowText("Cows have four stomachs.", 3));
-        yield return StartCoroutine(ShowText("Does each stomach taste grass differently?", 3));
-        yield return StartCoroutine(ShowText("Three sheeps.", 3));
-        yield return StartCoroutine(ShowText("Ah, that's stupid.", 3));
-        yield return StartCoroutine(ShowText("Stomachs don't taste... ", 3));
-        yield return StartCoroutine(ShowText("Or... do they?", 3));
-        yield return StartCoroutine(ShowText("Four sheeps.", 3));
-        yield return StartCoroutine(ShowText("......", 6));
-        yield return StartCoroutine(ShowText("WHY CAN'T I FALL ASLEEP?", 3));
+        // yield return StartCoroutine(ShowText("A very important meeting...", 3));
+        // yield return StartCoroutine(ShowText("Have I put it to my calendar?", 3));
+        // yield return StartCoroutine(ShowText("One sheep.", 3));
+        // yield return StartCoroutine(ShowText("What does grass taste like?", 3));
+        // yield return StartCoroutine(ShowText("Two sheep.", 3));
+        // yield return StartCoroutine(ShowText("Cows have four stomachs.", 3));
+        // yield return StartCoroutine(ShowText("Does each stomach taste grass differently?", 3));
+        // yield return StartCoroutine(ShowText("Three sheep.", 3));
+        // yield return StartCoroutine(ShowText("Ah, that's stupid.", 3));
+        // yield return StartCoroutine(ShowText("Stomachs don't taste... ", 3));
+        // yield return StartCoroutine(ShowText("Or... do they?", 3));
+        // yield return StartCoroutine(ShowText("......", 6));
+        // yield return StartCoroutine(ShowText("WHY CAN'T I FALL ASLEEP?", 3));
 
         wakeUpPrompt.gameObject.SetActive(true);
     }

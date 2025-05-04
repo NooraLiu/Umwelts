@@ -65,6 +65,24 @@ public class UmweltCameraController : MonoBehaviour
     [Header("Mode-Specific Spawn Points")]
     public Transform dogSpawnPoint; // Assign in Inspector
 
+    [Header("Bird Area Control")]
+    public Collider slowZoneCollider;
+    public float birdSpeedOutsideZone = 6f;
+
+    [Header("Spherical Gravity Settings")]
+    public float planetWalkSpeed = 2f;   // Walking speed while on the planet surface
+    public float planetGravity = 9.81f;  // Gravity pulling toward the planet's center
+
+
+    [Header("UI Hints")]
+    public GameObject landHintText;
+
+    private bool isOnPlanet = false;
+    private Transform currentPlanet;
+    private bool canLand = false;
+    public float landingCheckRadius = 10f; // Radius to check for nearby planets
+
+
     public bool ending = false;
 
 
@@ -108,6 +126,19 @@ public class UmweltCameraController : MonoBehaviour
         HandleMouseLook();
         HandleModeSwitching();
         //CheckInteractionZones();
+        if (currentMode == Mode.Bird && isHovering)
+        {
+            CheckLandingZone();
+
+            if (canLand && Input.GetKeyDown(KeyCode.R))
+            {
+                BeginPlanetLanding();
+            }
+        }
+        else
+        {
+            if (landHintText != null) landHintText.SetActive(false);
+        }
 
         switch (currentMode)
         {
@@ -155,7 +186,7 @@ public class UmweltCameraController : MonoBehaviour
         {
             RenderSettings.ambientIntensity = 1.2f;
             RenderSettings.skybox = birdSkybox;
-            directionalLight.transform.rotation = Quaternion.Euler(5.65f, -98f, 0f);
+            directionalLight.transform.rotation = Quaternion.Euler(88f, -98f, 0f);
             RenderSettings.reflectionIntensity = 1f;
         }
 
@@ -275,23 +306,56 @@ public class UmweltCameraController : MonoBehaviour
         ApplyGravity();
     }
 
-    void HandleBirdMovement()
-    {
-        HandleTakeoffAndLanding();
-        HandleAltitudeControl();
+    // void HandleBirdMovement()
+    // {
+    //     HandleTakeoffAndLanding();
+    //     HandleAltitudeControl();
 
-        if (isHovering)
+    //     if (isHovering)
+    //     {
+    //        float currentSpeed = IsInsideSlowZone() ? avianSettings.flySpeed : birdSpeedOutsideZone;
+    //         var horizontalMove = GetMovementVector() * currentSpeed * Time.deltaTime;
+    //         var verticalMove = Vector3.up * verticalSpeed * Time.deltaTime;
+    //         controller.Move(horizontalMove + verticalMove);
+    //     }
+    //     else
+    //     {
+    //         MoveCharacter(avianSettings.groundSpeed);
+    //         ApplyGravity();
+    //     }
+    // }
+    void HandleBirdMovement()
+{
+    if (isOnPlanet)
+    {
+        HandleSphericalWalking();
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            var horizontalMove = GetMovementVector() * avianSettings.flySpeed * Time.deltaTime;
-            var verticalMove = Vector3.up * verticalSpeed * Time.deltaTime;
-            controller.Move(horizontalMove + verticalMove);
+            isOnPlanet = false;
+            isHovering = true;
+            verticalSpeed = avianSettings.ascentSpeed;
         }
-        else
-        {
-            MoveCharacter(avianSettings.groundSpeed);
-            ApplyGravity();
-        }
+
+        return;
     }
+
+    HandleTakeoffAndLanding();
+    HandleAltitudeControl();
+
+    if (isHovering)
+    {
+        float currentSpeed = IsInsideSlowZone() ? avianSettings.flySpeed : birdSpeedOutsideZone;
+        var horizontalMove = GetMovementVector() * currentSpeed * Time.deltaTime;
+        var verticalMove = Vector3.up * verticalSpeed * Time.deltaTime;
+        controller.Move(horizontalMove + verticalMove);
+    }
+    else
+    {
+        MoveCharacter(avianSettings.groundSpeed);
+        ApplyGravity();
+    }
+}
 
     Vector3 GetMovementVector()
     {
@@ -348,6 +412,67 @@ public class UmweltCameraController : MonoBehaviour
         verticalSpeed = 0f;
         velocity.y = 0f;
     }
+
+    void CheckLandingZone()
+{
+    canLand = false;
+    if (landHintText != null) landHintText.SetActive(false);
+
+    Collider[] hits = Physics.OverlapSphere(transform.position, landingCheckRadius);
+    foreach (var hit in hits)
+    {
+        if (hit.CompareTag("Planet"))
+        {
+            canLand = true;
+            currentPlanet = hit.transform;
+            if (landHintText != null) landHintText.SetActive(true);
+            return;
+        }
+    }
+}
+
+void HandleSphericalWalking()
+{
+    if (currentPlanet == null) return;
+
+    // 1. Gravity direction (center of planet to player)
+    Vector3 gravityDir = (currentPlanet.position - transform.position).normalized;
+
+    // 2. Align player upright
+    Quaternion targetRotation = Quaternion.FromToRotation(transform.up, gravityDir) * transform.rotation;
+    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+
+    // 3. Input on tangent plane
+    float h = Input.GetAxis("Horizontal");
+    float v = Input.GetAxis("Vertical");
+
+    Vector3 inputDir = new Vector3(h, 0f, v).normalized;
+    if (inputDir.sqrMagnitude < 0.01f) return;
+
+    // 4. Use camera for movement orientation
+    Vector3 camForward = Vector3.ProjectOnPlane(playerCamera.transform.forward, gravityDir).normalized;
+    Vector3 camRight = Vector3.Cross(gravityDir, camForward).normalized;
+    Vector3 moveDir = (camForward * v + camRight * h).normalized;
+
+    // 5. Move using CharacterController
+    controller.Move(moveDir * planetWalkSpeed * Time.deltaTime);
+
+    // 6. Pull toward surface gently (gravity replaces snap correction)
+    controller.Move(gravityDir * planetGravity * Time.deltaTime);
+}
+
+
+void BeginPlanetLanding()
+{
+    if (currentPlanet == null) return;
+
+    isHovering = false;
+    isOnPlanet = true;
+    verticalSpeed = 0f;
+
+    if (landHintText != null) landHintText.SetActive(false);
+}
+
     #endregion
 
     #region Environment Interactions
@@ -374,11 +499,17 @@ public class UmweltCameraController : MonoBehaviour
         }
         return false;
     }
+    bool IsInsideSlowZone()
+    {
+        return slowZoneCollider != null && slowZoneCollider.bounds.Contains(transform.position);
+    }
+
     #endregion
 
     #region Physics
     void ApplyGravity()
     {
+        if (isOnPlanet) return;
         if (controller.isGrounded && velocity.y < 0) velocity.y = -0.1f;
         velocity.y -= gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
