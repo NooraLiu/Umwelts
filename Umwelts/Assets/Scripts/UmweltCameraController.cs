@@ -112,6 +112,11 @@ public class UmweltCameraController : MonoBehaviour
     public bool IsSprinting => currentMode == Mode.Person && Input.GetKey(KeyCode.LeftShift);
     public Vector3 Velocity => controller.velocity;
 
+    private bool rotatingUpright = false;
+    private Quaternion targetUprightRotation;
+    private float uprightRotateSpeed = 3f; // Adjust to control how fast it rotates
+
+
 
     void Start()
     {
@@ -152,6 +157,18 @@ public class UmweltCameraController : MonoBehaviour
             case Mode.Dog: HandleDogMovement(); break;
             case Mode.Bird: HandleBirdMovement(); break;
         }
+        if (rotatingUpright)
+    {
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetUprightRotation, Time.deltaTime * uprightRotateSpeed);
+
+        // Stop rotating when close enough
+        if (Quaternion.Angle(transform.rotation, targetUprightRotation) < 0.5f)
+        {
+            transform.rotation = targetUprightRotation;
+            rotatingUpright = false;
+        }
+    }
+
     }
 
     void FixedUpdate()
@@ -364,7 +381,8 @@ public class UmweltCameraController : MonoBehaviour
             rb.isKinematic = true;            // Stop using physics
             usingRigidbody = false;
             controller.enabled = true;        // Resume CharacterController movement
-            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0); // upright
+            targetUprightRotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
+            rotatingUpright = true;
         }
 
     return;
@@ -421,7 +439,14 @@ public class UmweltCameraController : MonoBehaviour
         }
     }
 
-    // Only fall if explicitly descending
+    // Interrupt fall and start flying up when outside slow zone and player presses SPACE
+    if (isDescending && Input.GetKeyDown(KeyCode.Space) && !IsInsideSlowZone())
+    {
+        isDescending = false;
+        StartAscending();
+    }
+
+    // Descent logic
     if (isDescending)
     {
         verticalSpeed = -avianSettings.descentSpeed;
@@ -431,6 +456,7 @@ public class UmweltCameraController : MonoBehaviour
         verticalSpeed = 0f; // Maintain altitude
     }
 
+    // Landing check
     if (verticalSpeed < 0 && controller.isGrounded)
     {
         CompleteLanding();
@@ -513,6 +539,12 @@ void BeginPlanetLanding()
     usingRigidbody = true;
 
     if (landHintText != null) landHintText.SetActive(false);
+    PlanetInteraction planetInteraction = currentPlanet.GetComponent<PlanetInteraction>();
+if (planetInteraction != null)
+{
+    planetInteraction.TriggerLandingNarrative();
+}
+
 }
 
     #endregion
