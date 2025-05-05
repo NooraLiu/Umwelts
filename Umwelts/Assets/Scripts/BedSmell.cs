@@ -42,6 +42,7 @@ public class BedSmell : MonoBehaviour
         {
             uiText?.SetActive(false);
         }
+        
     }
 
     void OnTriggerEnter(Collider other)
