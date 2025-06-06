@@ -17,6 +17,9 @@ public class ModeTransitionController : MonoBehaviour
     public TextMeshProUGUI birdHintText;
     public Image fadeScreen;
 
+    public UmweltModeAudioPlayer modeAudioPlayer;  // Add this to the top of ModeTransitionController
+
+
     [Header("Narrative Settings")]
     public List<string> narrativeTexts;
     public float textFadeTime = 0.5f;
@@ -27,6 +30,9 @@ public class ModeTransitionController : MonoBehaviour
 
     [Header("Interaction Settings")]
     public float interactionRadius = 3f;
+
+    [Header("Audio")]
+    public AudioSource transitionAudioSource; // Assign your transition clip in the Inspector
 
     private bool inZone = false;
     private bool transitioning = false;
@@ -79,48 +85,68 @@ public class ModeTransitionController : MonoBehaviour
     }
 
     IEnumerator DoTransitionToBirdMode()
+{
+    transitioning = true;
+    interactionHintText?.gameObject.SetActive(false);
+
+    // Stop ambience and play transition
+    //var modeAudioPlayer = cameraController.GetComponent<UmweltModeAudioPlayer>();
+    if (modeAudioPlayer != null)
     {
-        transitioning = true;
-        interactionHintText?.gameObject.SetActive(false);
+         modeAudioPlayer.overrideAudio = true;
 
-        // Freeze position but allow camera to rotate
-        frozenPosition = player.position;
-        StartCoroutine(LockPlayerPosition());
-
-        // Immediately fade to 20% black
-        SetImageAlpha(fadeScreen, 0.2f);
-
-        // Narrative sequence
-        foreach (var line in narrativeTexts)
-        {
-            narrativeTextDisplay.text = line;
-            yield return StartCoroutine(FadeText(narrativeTextDisplay, 0f, 1f, textFadeTime));
-            yield return new WaitForSeconds(textHoldTime);
-            yield return StartCoroutine(FadeText(narrativeTextDisplay, 1f, 0f, textFadeTime));
-        }
-
-        // Fade to full black at the end
-        yield return StartCoroutine(FadeImage(fadeScreen, 0.2f, 1f, fadeToBlackDuration));
-
-        // Switch to bird mode
-        cameraController.SetMode(UmweltCameraController.Mode.Bird);
-        transitioning = false;
-
-        // Fade out
-        yield return StartCoroutine(FadeImage(fadeScreen, 1f, 0f, fadeFromBlackDuration));
-
-        // Bird hint fade in/out
-        if (birdHintText != null)
-        {
-            birdHintText.gameObject.SetActive(true);
-            yield return StartCoroutine(FadeText(birdHintText, 0f, 1f, textFadeTime));
-            yield return new WaitForSeconds(birdHintDuration);
-            yield return StartCoroutine(FadeText(birdHintText, 1f, 0f, textFadeTime));
-            birdHintText.gameObject.SetActive(false);
-        }
-
-        transitioning = false;
+        // Stop all ambient sounds to prevent restart
+        modeAudioPlayer.personAudioSource?.Stop();
+        modeAudioPlayer.dogAudioSource?.Stop();
+        modeAudioPlayer.birdAudioSource?.Stop();
     }
+
+    if (transitionAudioSource != null)
+    {
+        transitionAudioSource.Play();
+    }
+
+    frozenPosition = player.position;
+    StartCoroutine(LockPlayerPosition());
+
+    SetImageAlpha(fadeScreen, 0.2f);
+
+    foreach (var line in narrativeTexts)
+    {
+        narrativeTextDisplay.text = line;
+        yield return StartCoroutine(FadeText(narrativeTextDisplay, 0f, 1f, textFadeTime));
+        yield return new WaitForSeconds(textHoldTime);
+        yield return StartCoroutine(FadeText(narrativeTextDisplay, 1f, 0f, textFadeTime));
+    }
+
+    yield return StartCoroutine(FadeImage(fadeScreen, 0.2f, 1f, fadeToBlackDuration));
+
+    cameraController.SetMode(UmweltCameraController.Mode.Bird);
+
+    if (transitionAudioSource != null && transitionAudioSource.isPlaying)
+    {
+        transitionAudioSource.Stop();
+    }
+
+    if (modeAudioPlayer != null)
+    {
+        modeAudioPlayer.overrideAudio = false;
+    }
+
+    transitioning = false;
+    yield return StartCoroutine(FadeImage(fadeScreen, 1f, 0f, fadeFromBlackDuration));
+
+    if (birdHintText != null)
+    {
+        birdHintText.gameObject.SetActive(true);
+        yield return StartCoroutine(FadeText(birdHintText, 0f, 1f, textFadeTime));
+        yield return new WaitForSeconds(birdHintDuration);
+        yield return StartCoroutine(FadeText(birdHintText, 1f, 0f, textFadeTime));
+        birdHintText.gameObject.SetActive(false);
+    }
+
+    transitioning = false;
+}
 
     IEnumerator LockPlayerPosition()
     {

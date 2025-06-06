@@ -11,19 +11,21 @@ public class PlanetInteraction : MonoBehaviour
     public List<string> landingNarrativeTexts;
     public TextMeshProUGUI narrativeText;
     public TextMeshProUGUI landingHintText;
+    public AudioSource planetAudio;
+    public UmweltModeAudioPlayer modeAudioPlayer;
 
     public float textFadeTime = 0.5f;
     public float textHoldTime = 2f;
 
     private bool playedOnce = false;
     private bool inRange = false;
+    private bool onPlanet = false;
+    private Coroutine textCoroutine;
 
     void Start()
     {
         if (landingHintText != null)
-        {
             landingHintText.gameObject.SetActive(false);
-        }
 
         if (narrativeText != null)
         {
@@ -34,7 +36,7 @@ public class PlanetInteraction : MonoBehaviour
 
     void Update()
     {
-        if (playedOnce || player == null) return;
+        if (player == null) return;
 
         float distance = Vector3.Distance(player.position, transform.position);
         bool nowInRange = distance <= interactionRadius;
@@ -50,6 +52,9 @@ public class PlanetInteraction : MonoBehaviour
             inRange = false;
             if (landingHintText != null)
                 landingHintText.gameObject.SetActive(false);
+
+            // Reset when leaving planet range
+            ExitPlanetState();
         }
 
         if (inRange && Input.GetKeyDown(KeyCode.R))
@@ -59,13 +64,50 @@ public class PlanetInteraction : MonoBehaviour
 
             TriggerLandingNarrative();
         }
+
+        if (onPlanet && Input.GetKeyDown(KeyCode.Space))
+        {
+            ExitPlanetState();
+        }
+    }
+
+    void ExitPlanetState()
+    {
+        onPlanet = false;
+        playedOnce = false;
+
+        if (planetAudio != null && planetAudio.isPlaying)
+            planetAudio.Stop();
+
+        if (modeAudioPlayer != null && modeAudioPlayer.birdAudioSource != null)
+            modeAudioPlayer.birdAudioSource.Play();
+
+        if (textCoroutine != null)
+        {
+            StopCoroutine(textCoroutine);
+            textCoroutine = null;
+        }
+
+        if (narrativeText != null)
+        {
+            narrativeText.text = "";
+            SetTextAlpha(narrativeText, 0f);
+        }
     }
 
     public void TriggerLandingNarrative()
     {
         if (playedOnce) return;
         playedOnce = true;
-        StartCoroutine(PlayLandingSequence());
+        onPlanet = true;
+
+        if (planetAudio != null)
+            planetAudio.Play();
+
+        if (modeAudioPlayer != null && modeAudioPlayer.birdAudioSource != null)
+            modeAudioPlayer.birdAudioSource.Stop();
+
+        textCoroutine = StartCoroutine(PlayLandingSequence());
     }
 
     IEnumerator PlayLandingSequence()
@@ -77,6 +119,9 @@ public class PlanetInteraction : MonoBehaviour
             yield return new WaitForSeconds(textHoldTime);
             yield return StartCoroutine(FadeText(narrativeText, 1f, 0f, textFadeTime));
         }
+
+        narrativeText.text = "";
+        SetTextAlpha(narrativeText, 0f);
     }
 
     IEnumerator FadeText(TextMeshProUGUI txt, float from, float to, float duration)
